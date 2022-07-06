@@ -3,7 +3,7 @@ import Counter from "./components/Counter/Counter.component";
 import React, { useState } from "react";
 export const contextTheme = React.createContext();
 const App = () => {
-  const [theme, setTheme] = useState("red");
+  const [theme, setTheme] = useState("green");
   return (
     <contextTheme.Provider value={{ backgroundColor: theme }}>
       <Counter intialCount={0} />
