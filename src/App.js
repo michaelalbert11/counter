@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import Counter from "./components/Counter/Counter.component";
+// import Todo from "./components/Todo/Todo.component";
+import React, { useState } from "react";
+export const contextTheme = React.createContext();
+const App = () => {
+  const [theme, setTheme] = useState("red");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <contextTheme.Provider value={{ backgroundColor: theme }}>
+      <Counter intialCount={0} />
+      <button
+        onClick={() => {
+          setTheme((prevTheme) => {
+            return prevTheme === "red" ? "blue" : "red";
+          });
+          console.log(theme);
+        }}
+      >
+        Change theme
+      </button>
+    </contextTheme.Provider>
   );
-}
+};
 
 export default App;
